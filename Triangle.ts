@@ -7,35 +7,41 @@
  */
 
 export class Triangle {
-  private aSide: number
-  private bSide: number
-  private cSide: number
+  private sides: number[3]
 
   // variables
   constructor(aSide: number, bSide: number, cSide: number) {
-    this.aSide = aSide
-    this.bSide = bSide
-    this.cSide = cSide
-    this.semiperimeter = (this.aSide + this.bSide + this.cSide) / 2
+    this.sides[0] = aSide
+    this.sides[1] = bSide
+    this.sides[2] = cSide
   }
 
   //get side length
   public get aSide() {
-    return this.aSide
+    return this.sides[0]
   }
 
   //get side length
   public get bSide() {
-    return this.bSide
+    return this.sides[1]
   }
 
   //get side length
   public get cSide() {
-    return this.cSide
+    return this.sides[2]
   }
 
-  // checks if stack is empty
-  public area() {
+  // return angle
+  public angle(angleNumber: number): number {
     
+  }
+
+  // return triangle area
+  public area(): number {
+    return Math.sqrt(this.semiPerimeter() * (this.semiPerimeter() - this.aSide) * (this.semiPerimeter() - this.bSide) * (this.semiPerimeter() - this.cSide))
+  }
+
+  public semiPerimeter(): number {
+    return (this.aSide + this.bSide + this.cSide) / 2
   }
 }
