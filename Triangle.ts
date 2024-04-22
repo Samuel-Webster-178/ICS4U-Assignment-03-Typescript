@@ -34,6 +34,7 @@ export default class Triangle {
 
   // return angle
   public angle(angleNumber: number): number {
+    angleNumber = (angleNumber - 1) // 1-3 to 0-2
     const aSide = this.sides[angleNumber]
     const bSide = this.sides[(angleNumber + 1) % 3]
     const cSide = this.sides[(angleNumber + 2) % 3] //wrap to lower bound
@@ -48,6 +49,15 @@ export default class Triangle {
   public area(): number {
     return Math.sqrt(this.semiPerimeter() * (this.semiPerimeter() - this.sides[0]) * (this.semiPerimeter() - this.sides[1]) * (this.semiPerimeter() - this.sides[2]))
   }
+
+  // return triangle circumcircle radius
+  public circumsicleRadius(): number {
+    let circumcircle = -1
+    if (this.isValid()) {
+      circumcircle = (this.sides[0] * this.sides[1] * this.sides[2]) / (4 * this.area)
+    }
+    return circumcircle
+}
 
   // find type of triangle
   public getType(): string {
@@ -67,8 +77,25 @@ export default class Triangle {
           type = "Scalene Triangle"
         }
     }
-
     return type
+  }
+
+  // return triangle height
+  public height(sideNumber: number): number {
+    let height = -1
+    if (this.isValid()) {
+      height = (2 * this.area()) / this.sides[sideNumber - 1] // 1-3 to 0-2
+    }
+    return height
+  }
+
+  // return triangle inner circle radius
+  public innerCircleRadius(): number {
+    let innerCircleRadius = -1
+    if (this.isValid()) {
+        innerCircleRadius = this.area() / this.semiPerimeter()
+    }
+    return innerCircleRadius
   }
 
   // sum of any two sides is not greater than third side
