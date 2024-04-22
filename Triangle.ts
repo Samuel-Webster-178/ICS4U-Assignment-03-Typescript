@@ -7,18 +7,14 @@
  */
 
 export default class Triangle {
-  private sides: number[3]
-  //private sidePairs: number[3][2]
+  private sides: number[]
 
   // variables
   constructor(aSide: number, bSide: number, cSide: number) {
+    this.sides = []
     this.sides[0] = aSide
     this.sides[1] = bSide
     this.sides[2] = cSide
-    //for (let i = 0; i < 3; i++) {
-    //  this.sidePairs[i][0] = i
-    //  this.sidePairs[i][1] = (i + 1) % 3 //wrap val to pair 2, 0
-    //}
   }
 
   //get side length
