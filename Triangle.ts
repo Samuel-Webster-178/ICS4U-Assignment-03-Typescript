@@ -40,14 +40,19 @@ export default class Triangle {
     const cSide = this.sides[(angleNumber + 2) % 3] //wrap to lower bound
     let angle = -1
     if (this.isValid()) {
-      angle = Math.acos((this.bSide**2 + this.cSide**2 - this.aSide**2) / (2 * this.bSide * this.cSide))
+      angle = Math.acos((bSide**2 + cSide**2 - aSide**2) / (2 * bSide * cSide))
     }
     return angle
   }
 
   // return triangle area
   public area(): number {
-    return Math.sqrt(this.semiPerimeter() * (this.semiPerimeter() - this.sides[0]) * (this.semiPerimeter() - this.sides[1]) * (this.semiPerimeter() - this.sides[2]))
+    return Math.sqrt(
+        this.semiPerimeter()
+        * (this.semiPerimeter() - this.sides[0])
+        * (this.semiPerimeter() - this.sides[1])
+        * (this.semiPerimeter() - this.sides[2])
+      )
   }
 
   // return triangle circumcircle radius
