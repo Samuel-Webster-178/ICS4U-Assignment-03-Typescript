@@ -54,7 +54,7 @@ export default class Triangle {
   public circumsicleRadius(): number {
     let circumcircle = -1
     if (this.isValid()) {
-      circumcircle = (this.sides[0] * this.sides[1] * this.sides[2]) / (4 * this.area)
+      circumcircle = (this.sides[0] * this.sides[1] * this.sides[2]) / (4 * this.area())
     }
     return circumcircle
 }
