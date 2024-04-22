@@ -6,7 +6,7 @@
  * @since   2024-01-01
  */
 
-export class Triangle {
+export default class Triangle {
   private sides: number[3]
   //private sidePairs: number[3][2]
 
