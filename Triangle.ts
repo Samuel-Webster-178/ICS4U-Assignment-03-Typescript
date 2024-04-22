@@ -41,7 +41,7 @@ export default class Triangle {
     if (this.isValid()) {
       angle = Math.acos((this.bSide**2 + this.cSide**2 - this.aSide**2) / (2 * this.bSide * this.cSide))
     }
-    return this.angle
+    return angle
   }
 
   // return triangle area
