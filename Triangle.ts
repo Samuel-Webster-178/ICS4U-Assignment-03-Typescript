@@ -49,9 +49,9 @@ export default class Triangle {
   public area(): number {
     return Math.sqrt(
         this.semiPerimeter()
-        * (this.semiPerimeter() - this.sides[0])
-        * (this.semiPerimeter() - this.sides[1])
-        * (this.semiPerimeter() - this.sides[2])
+        * (this.semiPerimeter() - this.aSide)
+        * (this.semiPerimeter() - this.bSide)
+        * (this.semiPerimeter() - this.cSide)
       )
   }
 
@@ -59,7 +59,7 @@ export default class Triangle {
   public circumsicleRadius(): number {
     let circumcircle = -1
     if (this.isValid()) {
-      circumcircle = (this.sides[0] * this.sides[1] * this.sides[2]) / (4 * this.area())
+      circumcircle = (this.aSide * this.bSide * this.cSide) / (4 * this.area())
     }
     return circumcircle
 }
@@ -68,15 +68,19 @@ export default class Triangle {
   public getType(): string {
     let type = "-1"
     if (this.isValid()) {
-        if (this.sides[0] == this.sides[1] && this.sides[0] == this.sides[2]) {
+        if (this.aSide == this.bSide && this.aSide == this.bSide) {
           type = "Equilateral Triangle"
         } else if (
-          this.sides[0] == this.sides[1]
-            || this.sides[1] == this.sides[2]
-            || this.sides[2] == this.sides[0]
+          this.aSide == this.bSide
+            || this.bSide == this.cSide
+            || this.cSide == this.aSide
         ) {
           type = "Isosceles Triangle"
-        } else if (this.sides[0]**2 + this.sides[1]**2 == this.sides[2]**2) {
+        } else if (
+          this.aSide**2 + this.bSide**2 == this.cSide**2
+          || this.bSide**2 + this.cSide**2 == this.aSide**2
+          || this.cSide**2 + this.aSide**2 == this.bSide**2
+        ) {
           type = "Right Triangle"
         } else {
           type = "Scalene Triangle"
@@ -105,16 +109,16 @@ export default class Triangle {
 
   // sum of any two sides is not greater than third side
   public isValid(): boolean {
-    return this.sides[0] + this.sides[1] > this.sides[2]
-      && this.sides[1] + this.sides[2] > this.sides[0]
-      && this.sides[2] + this.sides[0] > this.sides[1]
+    return this.aSide + this.bSide > this.cSide
+      && this.bSide + this.cSide > this.aSide
+      && this.cSide + this.aSide > this.bSide
   }
 
   // return triangle semiperimeter
   public semiPerimeter(): number {
     let value = -1
     if (this.isValid()) {
-      value = (this.sides[0] + this.sides[1] + this.sides[2]) / 2
+      value = (this.aSide + this.bSide + this.cSide) / 2
     }
     return value
   }
