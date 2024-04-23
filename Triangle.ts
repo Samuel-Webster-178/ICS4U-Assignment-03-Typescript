@@ -58,6 +58,7 @@ export default class Triangle {
         * (this.semiPerimeter() - this.cSide)
       )
     }
+    return area
   }
 
   // return triangle circumcircle radius
