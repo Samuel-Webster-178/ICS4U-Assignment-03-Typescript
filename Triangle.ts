@@ -49,12 +49,15 @@ export default class Triangle {
 
   // return triangle area
   public area(): number {
-    return Math.sqrt(
+    let area = -1
+    if (this.isValid()) {
+      area = Math.sqrt(
         this.semiPerimeter()
         * (this.semiPerimeter() - this.aSide)
         * (this.semiPerimeter() - this.bSide)
         * (this.semiPerimeter() - this.cSide)
       )
+    }
   }
 
   // return triangle circumcircle radius
