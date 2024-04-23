@@ -40,7 +40,9 @@ export default class Triangle {
     const cSide = this.sides[(angleNumber + 2) % 3] //wrap to lower bound
     let angle = -1
     if (this.isValid()) {
-      angle = Math.acos((bSide**2 + cSide**2 - aSide**2) / (2 * bSide * cSide))
+      angle = Math.acos(
+        (bSide**2 + cSide**2 - aSide**2) / (2 * bSide * cSide)
+      )
     }
     return angle
   }
